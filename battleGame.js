@@ -24,7 +24,7 @@ const player2 ={
 
 // 3. Refactor attack function to an arrow function.  Comment out function above.
 
-attack = (attackingPlayer,defendingPlayer,baseDamage=0,variableDamage=0)=>{
+const attack = (attackingPlayer,defendingPlayer,baseDamage=0,variableDamage=0)=>{
 
   let randomDamage = Math.floor((variableDamage+1)*Math.random());
   let totalDamage = randomDamage+baseDamage;
