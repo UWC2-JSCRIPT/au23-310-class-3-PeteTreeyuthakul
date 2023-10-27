@@ -35,14 +35,15 @@ console.log(testPhoneNumber('(206) 33-4444')); // should return false, missing a
 // Returns an object in the format {areaCode, phoneNumber
 
 parsePhoneNumber = (phoneNumber)=>{
-    const regexAreaCode = /^\(?\d{3}\)?/
-    const regexPhoneNumber = /\d{3}[-\s]\d{4}$/
-    let arrayAreaCode
+    const regexAreaCode = /^(\(?\d{3}\)?)[-\s](\d{3})[-\s](\d{4}$)/
+    
     let arrayPhoneNumber
-    arrayAreaCode = regexAreaCode.exec(phoneNumber)
-    arrayPhoneNumber =regexPhoneNumber.exec(phoneNumber)
-    let strAreaCode = arrayAreaCode[0]
-    let strPhoneNumber = arrayPhoneNumber[0]
+    
+    arrayPhoneNumber = regexAreaCode.exec(phoneNumber)
+    console.log(arrayPhoneNumber)
+    
+    let strAreaCode = arrayPhoneNumber[1]
+    
     let areaCode ='XXX'
 
     if (strAreaCode.length !== 3){
@@ -50,9 +51,9 @@ parsePhoneNumber = (phoneNumber)=>{
     }else{
         areaCode = strAreaCode
     }
-
-    let phoneNumberFirst3 = strPhoneNumber.substring(0,3)
-    let phoneNumberLast4 = strPhoneNumber.substring(4,8)
+    
+    let phoneNumberFirst3 = arrayPhoneNumber[2]
+    let phoneNumberLast4 = arrayPhoneNumber[3]
     phoneNumber = phoneNumberFirst3+phoneNumberLast4
     const objPhoneNumber = {areaCode, phoneNumber}
     return objPhoneNumber
